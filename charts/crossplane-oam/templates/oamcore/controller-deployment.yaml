@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "fullname" . }}
+  name: {{ template "name" . }}-localstack
   labels:
     {{- include "labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace }}
