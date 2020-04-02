@@ -1,0 +1,25 @@
+apiVersion: v1
+appVersion: 0.10.0-rc.24.g61146c2
+description: Crossplane, the open source multicloud control plane, allows you to manage
+  your cloud-native applications and infrastructure across environments, clusters,
+  regions and clouds.
+home: https://crossplane.io
+icon: https://crossplane.io/images/favicon_192x192.png
+keywords:
+- clusters as cattle
+- infrastructure
+- iac
+- workloads
+- gcp
+- azure
+- aws
+- rds
+- cloudsql
+- gke
+- aks
+- eks
+maintainers:
+- email: info@crossplane.io
+  name: Crossplane Maintainers
+name: crossplane
+version: 0.10.0-rc.24.g61146c2

@@ -1,0 +1,109 @@
+replicas: 1
+
+deploymentStrategy: RollingUpdate
+
+image:
+  repository: crossplane/crossplane
+  tag: v0.10.0-rc.24.g61146c2
+  pullPolicy: Always
+
+args:
+- '--debug'
+
+imagePullSecrets:
+- dockerhub
+
+personas:
+  deploy: true
+
+clusterStacks:
+  aws:
+    version: master
+    deploy: false
+  gcp:
+    version: master
+    deploy: false
+  azure:
+    version: master
+    deploy: false
+  rook:
+    version: master
+    deploy: false
+
+hostedConfig:
+  enabled: false
+
+templateStacks:
+  enabled: true
+  controllerImage: crossplane/templating-controller:v0.2.1
+
+resourcesCrossplane:
+  limits:
+    cpu: 100m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+resourcesStackManager:
+  limits:
+    cpu: 100m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+forceImagePullPolicy: ""
+
+replicaCount: 1
+createNamespace: true
+coreimage:
+  repository: oamdev/core-resource-controller
+  tag: v0.1
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 443
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 30Mi
+  requests:
+    cpu: 100m
+    memory: 20Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# certificate related to the webhook
+certificate:
+  certificateName: serving-cert
+  issuerName: selfsigned-issuer
+  secretName: webhook-server-cert
