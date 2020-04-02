@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "oam-core-resources.fullname" . }}
+  name: {{ include "fullname" . }}
   labels:
-    {{- include "oam-core-resources.labels" . | nindent 4 }}
+    {{- include "labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
-      {{- include "oam-core-resources.selectorLabels" . | nindent 6 }}
+      {{- include "selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        {{- include "oam-core-resources.selectorLabels" . | nindent 8 }}
+        {{- include "selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "oam-core-resources.serviceAccountName" . }}
+      serviceAccountName: {{ include "serviceAccountName" . }}
       securityContext:
           {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

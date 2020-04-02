@@ -11,7 +11,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "oam-core-resources.fullname" . }}
+      name: {{ include "fullname" . }}
       namespace: {{ .Release.Namespace }}
       path: /mutate-core-oam-dev-v1alpha2-manualscalertrait
       port: {{ .Values.service.port }}
@@ -40,7 +40,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "oam-core-resources.fullname" . }}
+      name: {{ include "fullname" . }}
       namespace: {{ .Release.Namespace }}
       path: /validate-core-oam-dev-v1alpha2-manualscalertrait
       port: {{ .Values.service.port }}

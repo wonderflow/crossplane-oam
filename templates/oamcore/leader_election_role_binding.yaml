@@ -8,5 +8,5 @@ roleRef:
   name: leader-election-role
 subjects:
 - kind: ServiceAccount
-  name: {{ include "oam-core-resources.serviceAccountName" . }}
+  name: {{ include "serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}

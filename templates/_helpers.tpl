@@ -19,7 +19,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name, otherwise, it will be append to the chart name
 */}}
-{{- define "oam-core-resources.fullname" -}}
+{{- define "fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -45,7 +45,7 @@ If release name contains chart name it will be used as a full name, otherwise, i
 Common labels
 */}}
 {{- define "labels" -}}
-helm.sh/chart: {{ include "oam-core-resources.chart" . }}
+helm.sh/chart: {{ include "chart" . }}
 {{ include "selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -57,7 +57,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "selectorLabels" -}}
-app.kubernetes.io/name: {{ include "oam-core-resources.name" . }}
+app.kubernetes.io/name: {{ include "name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
@@ -66,7 +66,7 @@ Create the name of the service account to use
 */}}
 {{- define "serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "oam-core-resources.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}

@@ -5,8 +5,8 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "oam-core-resources.fullname" . }}
+  name: {{ include "fullname" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "oam-core-resources.serviceAccountName" . }}
+  name: {{ include "serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}

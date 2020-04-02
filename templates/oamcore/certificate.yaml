@@ -16,8 +16,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   dnsNames:
-  - {{ include "oam-core-resources.fullname" . }}.{{ .Release.Namespace }}.svc
-  - {{ include "oam-core-resources.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+  - {{ include "fullname" . }}.{{ .Release.Namespace }}.svc
+  - {{ include "fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: {{ .Values.certificate.issuerName  | default "selfsigned-issuer" | quote  }}
