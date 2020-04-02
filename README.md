@@ -54,3 +54,7 @@ $ kubectl get deploy
 NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
 example-appconfig-workload-deployment   3/3     3            3           114s
 ```
+
+# Using OAM with KPT
+
+You could find lots of interesting things could be done by [using OAM with KPT](kpt/README.md).
