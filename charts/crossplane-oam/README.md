@@ -18,7 +18,7 @@ Crossplane and OAM all in one.
 ## Installation
 
 ```console
-helm repo add oam https://wonderflow.github.io/crossplane-chart/archives/
+helm repo add oam https://wonderflow.github.io/crossplane-oam/archives/
 kubectl create namespace oam-system
 helm install crossplane --namespace oam-system oam/crossplane-oam
 ```
