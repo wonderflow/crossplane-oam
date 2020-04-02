@@ -19,5 +19,5 @@ Crossplane and OAM all in one.
 
 ```console
 kubectl create namespace oam-system
-helm install crossplane --namespace oam-system crossplane-alpha/crossplane
+helm install crossplane --namespace oam-system .
 ```
